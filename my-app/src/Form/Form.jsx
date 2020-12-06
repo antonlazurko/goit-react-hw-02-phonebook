@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { v1 as uuidv1 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 class Form extends Component {
   state = { name: '', number: '', id: '' };
-  contactId = uuidv1();
-
+  contactId = uuidv4();
   handleFormChange = event => {
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value, id: this.contactId });

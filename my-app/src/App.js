@@ -1,15 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
-import Form from './Form/Form';
+import Form from './Form';
 import ContactsList from './ContactsList/ContactsList';
-import Filter from './Filter/Filter';
+import Filter from './Filter';
 class App extends Component {
   state = { contacts: [], filter: '' };
 
   addContact = contact => {
     this.setState(({ contacts }) => ({
-      contacts: [contact, ...contacts],
+      contacts: [...contacts, contact],
     }));
+    this.state.contacts.map(item =>
+      item.name === contact.name
+        ? alert(`${contact.name} is already in contacts.`)
+        : console.log(this.state.contacts),
+    );
   };
 
   filterChange = event => {
