@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-
+import styles from './Form.module.css';
 import { v4 as uuidv4 } from 'uuid';
 class Form extends Component {
   state = { name: '', number: '', id: '' };
@@ -19,14 +19,15 @@ class Form extends Component {
   };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form onSubmit={this.handleSubmit} className={styles.Form}>
+        <label className={styles.label}>
           Name
           <input
             type="text"
             value={this.state.name}
             name="name"
             onChange={this.handleFormChange}
+            className={styles.input}
           />
         </label>
         <label>
@@ -36,9 +37,12 @@ class Form extends Component {
             value={this.state.number}
             name="number"
             onChange={this.handleFormChange}
+            className={styles.input}
           />
         </label>
-        <button type="submit">Add contact</button>
+        <button type="submit" className={styles.formButton}>
+          Add contact
+        </button>
       </form>
     );
   }
