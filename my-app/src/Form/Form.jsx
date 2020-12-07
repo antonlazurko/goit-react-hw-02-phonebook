@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 class Form extends Component {
   state = { name: '', number: '', id: '' };
-  contactId = uuidv4();
   handleFormChange = event => {
-    console.log(this.contactId);
+    const contactId = uuidv4();
     const { name, value } = event.currentTarget;
-    this.setState({ [name]: value, id: this.contactId });
+    this.setState({ [name]: value, id: contactId });
   };
   handleSubmit = event => {
     event.preventDefault();
