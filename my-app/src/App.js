@@ -5,28 +5,18 @@ import ContactsList from './ContactsList/ContactsList';
 import Filter from './Filter';
 class App extends Component {
   state = {
-    contacts: [
-      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
-      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
-      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
-      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
-    ],
+    contacts: [],
     filter: '',
   };
 
   addContact = contact => {
+    if (this.state.contacts.find(item => item.name === contact.name)) {
+      alert(`${contact.name} is already in contacts.`);
+      return;
+    }
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
-
-    // ПОПЫТКА РЕАЛИЗАЦИИ ЗАПРЕТА ЗАПИСИ ОДИНАКОВЫХ КОНТАКТОВ)))
-    // this.state.contacts.map(item =>
-    //   item.name !== contact.name
-    //     ? this.setState(({ contacts }) => ({
-    //         contacts: [contact, ...contacts],
-    //       }))
-    //     : alert(`${contact.name} is already in contacts.`),
-    // );
   };
 
   filterChange = event => {
@@ -51,15 +41,20 @@ class App extends Component {
     const visibleContacts = this.getVisibleContacts();
 
     return (
-      <div>
-        <h1>Phonebook</h1>
-        <Form onSubmit={this.addContact} />
-        <h2>Contacts</h2>
+      <div className="Phonebook">
+        <h1 className="title">Phonebook</h1>
+        <Form onSubmit={this.addContact} className="Form" />
+        <h2 className="title">Contacts</h2>
         <ContactsList
           contacts={visibleContacts}
           onDeleteContact={this.deleteContact}
+          className="ContactsList"
         />
-        <Filter value={filter} onChange={this.filterChange} />
+        <Filter
+          value={filter}
+          onChange={this.filterChange}
+          className="Filter"
+        />
       </div>
     );
   }

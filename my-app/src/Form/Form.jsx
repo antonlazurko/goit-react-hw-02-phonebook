@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import { v4 as uuidv4 } from 'uuid';
 class Form extends Component {
   state = { name: '', number: '', id: '' };
@@ -42,3 +44,6 @@ class Form extends Component {
   }
 }
 export default Form;
+Form.propTypes = {
+  onSubmit: PropTypes.func,
+};
