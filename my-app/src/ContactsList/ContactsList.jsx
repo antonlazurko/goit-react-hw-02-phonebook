@@ -1,5 +1,5 @@
 import React from 'react';
-const ContactsList = ({ contacts }) => {
+const ContactsList = ({ contacts, onDeleteContact }) => {
   return (
     <ul>
       {contacts.map(({ name, number, id }) => {
@@ -7,6 +7,7 @@ const ContactsList = ({ contacts }) => {
           <li key={id}>
             <span>{name}:</span>
             <span>{number}</span>
+            <button onClick={() => onDeleteContact(id)}>Delete</button>
           </li>
         );
       })}

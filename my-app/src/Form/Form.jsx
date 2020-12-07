@@ -4,6 +4,7 @@ class Form extends Component {
   state = { name: '', number: '', id: '' };
   contactId = uuidv4();
   handleFormChange = event => {
+    console.log(this.contactId);
     const { name, value } = event.currentTarget;
     this.setState({ [name]: value, id: this.contactId });
   };
