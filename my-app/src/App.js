@@ -18,11 +18,15 @@ class App extends Component {
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
-    this.state.contacts.map(item =>
-      item.name === contact.name
-        ? alert(`${contact.name} is already in contacts.`)
-        : console.log(this.state.contacts),
-    );
+
+    // ПОПЫТКА РЕАЛИЗАЦИИ ЗАПРЕТА ЗАПИСИ ОДИНАКОВЫХ КОНТАКТОВ)))
+    // this.state.contacts.map(item =>
+    //   item.name !== contact.name
+    //     ? this.setState(({ contacts }) => ({
+    //         contacts: [contact, ...contacts],
+    //       }))
+    //     : alert(`${contact.name} is already in contacts.`),
+    // );
   };
 
   filterChange = event => {
@@ -37,7 +41,6 @@ class App extends Component {
     );
   };
   deleteContact = contactId => {
-    console.log(contactId);
     this.setState(({ contacts }) => ({
       contacts: contacts.filter(contact => contact.id !== contactId),
     }));
